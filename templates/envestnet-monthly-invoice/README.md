@@ -16,7 +16,7 @@ Compass Nexus iQ HTML email that sends the monthly tax invoice and the MIS summa
 | KPIs | `EV_PCT`, `AVG_KM_TRIP`, `AVG_COST_KM` | MIS `Vehicle Consolidation` |
 | Per vehicle type (`EV`, `MARAZZO`, `ERTIGA`, `DZIRE`) | `*_TRIPS`, `*_KM`, `*_RATE`, `*_AMOUNT`, `*_PCT` (also sets the bar width) | MIS `Trip Data` |
 | Reconciliation | `DEDUCTED_KM`, `NIL_KM_COUNT`, `NIL_KM_DATES` | MIS `Trip Log` |
-| Vendor | `VENDOR_PROPRIETOR`, `VENDOR_ADDRESS_LINE1/2`, `VENDOR_PAN`, `VENDOR_GSTIN`, `SIGNATORY_NAME`, `SIGNATORY_TITLE` | Business profile |
+| Vendor | `VENDOR_PROPRIETOR`, `VENDOR_ADDRESS_LINE1/2`, `VENDOR_PAN`, `VENDOR_GSTIN` (full 15-char, incl. state code), `SIGNATORY_NAME`, `SIGNATORY_TITLE` | Business profile |
 | Customer | `CUSTOMER_LEGAL_NAME`, `CUSTOMER_ADDRESS_LINE1/2/3`, `CUSTOMER_GSTIN` | Customer account |
 | Contact | `REPLY_TO_EMAIL`, `CC_EMAIL`, `PHONE_E164`, `PHONE_DISPLAY`, `WEBSITE_URL`, `WEBSITE_LABEL`, `WEBSITE2_URL`, `WEBSITE2_LABEL` | Business profile |
 
