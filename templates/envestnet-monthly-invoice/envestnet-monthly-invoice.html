@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="dark">
+<meta name="supported-color-schemes" content="dark">
+<title>Envestnet Monthly Invoice</title>
+<!--
+  Compass Nexus iQ · Envestnet monthly invoice + MIS email
+  All values are {{PLACEHOLDERS}}. Fill per cycle; see README.md.
+  Email-safe: table layout, inline styles, no JS. Paste as HTML body in Mail / Outlook / Gmail.
+-->
+<style>
+  body { margin:0; padding:0; background:#05070c; }
+  a { text-decoration:none; }
+  .btn:hover { opacity:.88; }
+  @media only screen and (max-width:620px) {
+    .wrap { width:100% !important; }
+    .px { padding-left:18px !important; padding-right:18px !important; }
+    .stack { display:block !important; width:100% !important; box-sizing:border-box; }
+    .stack-gap { padding-top:10px !important; padding-left:0 !important; }
+    .kpi { display:inline-block !important; width:48% !important; margin-bottom:8px; }
+    .hero { font-size:40px !important; }
+    .hide-sm { display:none !important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#05070c;-webkit-font-smoothing:antialiased;">
+
+<!-- preheader -->
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:#05070c;">
+  Invoice {{INVOICE_NO}} · ₹{{TOTAL}} · {{TRIPS}} trips · {{BILLABLE_KM}} billable km · {{CYCLE_MONTH}} MIS for review.
+</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#05070c;">
+<tr><td align="center" style="padding:28px 12px;">
+
+<table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background:#0b1020;border:1px solid #1d2638;border-radius:24px;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif;color:#e8ecf4;">
+
+  <!-- ============ HEADER ============ -->
+  <tr><td class="px" style="padding:26px 32px 22px;background:#0b1020;background-image:linear-gradient(135deg,#13203d 0%,#0b1020 55%,#1a1608 100%);border-bottom:1px solid #1d2638;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td style="font-size:12px;font-weight:700;letter-spacing:2.4px;color:#ffffff;white-space:nowrap;">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:8px;background:#d4a24c;vertical-align:middle;margin-right:8px;"></span>COMPASS NEXUS iQ
+        </td>
+        <td align="right">
+          <span style="display:inline-block;padding:5px 12px;border:1px solid #6b5426;border-radius:980px;background:#1f1a0e;color:#e7c27a;font-size:10px;font-weight:700;letter-spacing:1.4px;white-space:nowrap;">PRIORITY · PREMIUM TIER</span>
+        </td>
+      </tr>
+    </table>
+    <div style="margin-top:18px;font-size:26px;line-height:32px;font-weight:700;letter-spacing:-0.4px;color:#ffffff;">Invoice &amp; MIS Submission</div>
+    <div style="margin-top:4px;font-size:14px;color:#9aa6bd;">Envestnet &nbsp;·&nbsp; {{CYCLE_START}} – {{CYCLE_END}} &nbsp;·&nbsp; {{CYCLE_MONTH_NAME}} cycle</div>
+  </td></tr>
+
+  <!-- ============ HERO TOTAL ============ -->
+  <tr><td class="px" style="padding:24px 32px 8px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#111829;border:1px solid #232d42;border-radius:18px;">
+      <tr><td style="padding:22px 24px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.8px;color:#d4a24c;">INVOICE VALUE · {{INVOICE_NO}}</div>
+        <div class="hero" style="margin-top:6px;font-size:46px;line-height:52px;font-weight:700;letter-spacing:-1.2px;color:#ffffff;">₹{{TOTAL}}</div>
+        <div style="margin-top:4px;font-size:14px;color:#9aa6bd;">{{TRIPS}} logged trips &nbsp;·&nbsp; {{BILLABLE_KM}} billable km &nbsp;·&nbsp; {{VEHICLES}} vehicles &nbsp;·&nbsp; {{EMPLOYEES}} employees moved</div>
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:16px;">
+          <tr>
+            <td style="padding:6px 12px;border-radius:980px;background:#0f2a1a;border:1px solid #1f5a36;color:#5fe08a;font-size:11px;font-weight:600;">Invoice date {{INVOICE_DATE}}</td>
+            <td width="8"></td>
+            <td style="padding:6px 12px;border-radius:980px;background:#16213a;border:1px solid #2a3b62;color:#8fb6ff;font-size:11px;font-weight:600;">GST under RCM</td>
+          </tr>
+        </table>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- ============ KPI TILES ============ -->
+  <tr><td class="px" style="padding:10px 32px 4px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td class="kpi" width="25%" style="padding:0 4px 0 0;">
+          <div style="background:#0f2a1a;border:1px solid #1f5a36;border-radius:14px;padding:12px 8px;text-align:center;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:1px;color:#7fcf9c;">EV KM SHARE</div>
+            <div style="margin-top:4px;font-size:20px;font-weight:700;color:#ffffff;">{{EV_PCT}}%</div>
+          </div>
+        </td>
+        <td class="kpi" width="25%" style="padding:0 4px;">
+          <div style="background:#151b2b;border:1px solid #2a3348;border-radius:14px;padding:12px 8px;text-align:center;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:1px;color:#9aa6bd;">AVG KM / TRIP</div>
+            <div style="margin-top:4px;font-size:20px;font-weight:700;color:#ffffff;">{{AVG_KM_TRIP}}</div>
+          </div>
+        </td>
+        <td class="kpi" width="25%" style="padding:0 4px;">
+          <div style="background:#1f1a0e;border:1px solid #4a3b1c;border-radius:14px;padding:12px 8px;text-align:center;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:1px;color:#e7c27a;">AVG COST / KM</div>
+            <div style="margin-top:4px;font-size:20px;font-weight:700;color:#ffffff;">₹{{AVG_COST_KM}}</div>
+          </div>
+        </td>
+        <td class="kpi" width="25%" style="padding:0 0 0 4px;">
+          <div style="background:#151b2b;border:1px solid #2a3348;border-radius:14px;padding:12px 8px;text-align:center;">
+            <div style="font-size:9px;font-weight:700;letter-spacing:1px;color:#9aa6bd;">VEHICLES</div>
+            <div style="margin-top:4px;font-size:20px;font-weight:700;color:#ffffff;">{{VEHICLES}}</div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- ============ LETTER ============ -->
+  <tr><td class="px" style="padding:18px 32px 6px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#111829;border:1px solid #232d42;border-radius:18px;">
+      <tr><td style="padding:20px 22px;font-size:15px;line-height:23px;color:#dfe5f0;">
+        Dear Sir,<br><br>
+        Please find attached our <strong style="color:#ffffff;">Tax Invoice No. {{INVOICE_NO}}</strong> dated <strong style="color:#ffffff;">{{INVOICE_DATE_LONG}}</strong>, together with the <strong style="color:#ffffff;">{{CYCLE_MONTH}} MIS report</strong> for the billing cycle from <strong style="color:#ffffff;">{{CYCLE_START_LONG}} to {{CYCLE_END_LONG}}</strong>, for your review. The trip data and vehicle consolidation detail are attached as an Excel workbook.
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- ============ PRIMARY ACTIONS (Apple-style pills) ============ -->
+  <tr><td class="px" align="center" style="padding:18px 32px 6px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <td class="stack" width="50%" style="padding-right:5px;">
+          <a class="btn" href="mailto:{{REPLY_TO_EMAIL}}?cc={{CC_EMAIL}}&amp;subject=Approved%20%E2%80%94%20Invoice%20{{INVOICE_NO}}%20%C2%B7%20{{CYCLE_MONTH_URL}}%20MIS&amp;body=Hi%2C%0A%0AThe%20{{CYCLE_MONTH_URL}}%20MIS%20and%20Invoice%20{{INVOICE_NO}}%20(%E2%82%B9{{TOTAL}})%20are%20reviewed%20and%20approved.%0A%0ARegards%2C" style="display:block;background:#0a84ff;background-image:linear-gradient(180deg,#2b95ff 0%,#0a84ff 100%);color:#ffffff;font-size:15px;font-weight:600;line-height:20px;text-align:center;padding:14px 18px;border-radius:980px;letter-spacing:-0.1px;">✓&nbsp; Approve MIS &amp; Invoice</a>
+        </td>
+        <td class="stack stack-gap" width="50%" style="padding-left:5px;">
+          <a class="btn" href="mailto:{{REPLY_TO_EMAIL}}?cc={{CC_EMAIL}}&amp;subject=Clarification%20%E2%80%94%20Invoice%20{{INVOICE_NO}}%20%C2%B7%20{{CYCLE_MONTH_URL}}%20MIS&amp;body=Hi%2C%0A%0AWe%20need%20clarification%20on%20the%20following%20trips%20%2F%20items%3A%0A%0A-%20%0A%0ARegards%2C" style="display:block;background:#1c2436;border:1px solid #34405a;color:#e8ecf4;font-size:15px;font-weight:600;line-height:20px;text-align:center;padding:13px 18px;border-radius:980px;letter-spacing:-0.1px;">Request Clarification</a>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- ============ CATEGORY BREAKDOWN ============ -->
+  <tr><td class="px" style="padding:22px 32px 4px;">
+    <div style="font-size:12px;font-weight:700;letter-spacing:1.8px;color:#d4a24c;">CATEGORY BREAKDOWN BY VEHICLE TYPE</div>
+  </td></tr>
+
+  <!-- EV Sedan -->
+  <tr><td class="px" style="padding:10px 32px 0;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#111829;border:1px solid #232d42;border-left:3px solid #30d158;border-radius:14px;">
+      <tr><td style="padding:14px 18px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+          <td style="font-size:14px;font-weight:700;letter-spacing:.6px;color:#5fe08a;">⚡ EV SEDAN</td>
+          <td align="right" style="font-size:15px;font-weight:700;color:#ffffff;">₹{{EV_AMOUNT}}</td>
+        </tr></table>
+        <div style="margin-top:4px;font-size:13px;color:#9aa6bd;">{{EV_TRIPS}} trips · {{EV_KM}} km · ₹{{EV_RATE}}/km</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;background:#1e2638;border-radius:6px;"><tr>
+          <td width="{{EV_PCT}}%" height="6" style="background:#30d158;border-radius:6px;font-size:0;line-height:0;">&nbsp;</td><td style="font-size:0;line-height:0;">&nbsp;</td>
+        </tr></table>
+        <div style="margin-top:6px;font-size:12px;font-weight:600;color:#5fe08a;">{{EV_PCT}}% of billable km</div>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- Marazzo -->
+  <tr><td class="px" style="padding:10px 32px 0;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#111829;border:1px solid #232d42;border-left:3px solid #64a8ff;border-radius:14px;">
+      <tr><td style="padding:14px 18px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+          <td style="font-size:14px;font-weight:700;letter-spacing:.6px;color:#8fc0ff;">MARAZZO</td>
+          <td align="right" style="font-size:15px;font-weight:700;color:#ffffff;">₹{{MARAZZO_AMOUNT}}</td>
+        </tr></table>
+        <div style="margin-top:4px;font-size:13px;color:#9aa6bd;">{{MARAZZO_TRIPS}} trips · {{MARAZZO_KM}} km · ₹{{MARAZZO_RATE}}/km</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;background:#1e2638;border-radius:6px;"><tr>
+          <td width="{{MARAZZO_PCT}}%" height="6" style="background:#64a8ff;border-radius:6px;font-size:0;line-height:0;">&nbsp;</td><td style="font-size:0;line-height:0;">&nbsp;</td>
+        </tr></table>
+        <div style="margin-top:6px;font-size:12px;font-weight:600;color:#8fc0ff;">{{MARAZZO_PCT}}% of billable km</div>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- Ertiga -->
+  <tr><td class="px" style="padding:10px 32px 0;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#111829;border:1px solid #232d42;border-left:3px solid #bf5af2;border-radius:14px;">
+      <tr><td style="padding:14px 18px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+          <td style="font-size:14px;font-weight:700;letter-spacing:.6px;color:#d49bf7;">ERTIGA</td>
+          <td align="right" style="font-size:15px;font-weight:700;color:#ffffff;">₹{{ERTIGA_AMOUNT}}</td>
+        </tr></table>
+        <div style="margin-top:4px;font-size:13px;color:#9aa6bd;">{{ERTIGA_TRIPS}} trips · {{ERTIGA_KM}} km · ₹{{ERTIGA_RATE}}/km</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;background:#1e2638;border-radius:6px;"><tr>
+          <td width="{{ERTIGA_PCT}}%" height="6" style="background:#bf5af2;border-radius:6px;font-size:0;line-height:0;">&nbsp;</td><td style="font-size:0;line-height:0;">&nbsp;</td>
+        </tr></table>
+        <div style="margin-top:6px;font-size:12px;font-weight:600;color:#d49bf7;">{{ERTIGA_PCT}}% of billable km</div>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- Dzire -->
+  <tr><td class="px" style="padding:10px 32px 0;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#111829;border:1px solid #232d42;border-left:3px solid #ffb340;border-radius:14px;">
+      <tr><td style="padding:14px 18px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+          <td style="font-size:14px;font-weight:700;letter-spacing:.6px;color:#ffc56b;">DZIRE</td>
+          <td align="right" style="font-size:15px;font-weight:700;color:#ffffff;">₹{{DZIRE_AMOUNT}}</td>
+        </tr></table>
+        <div style="margin-top:4px;font-size:13px;color:#9aa6bd;">{{DZIRE_TRIPS}} trips · {{DZIRE_KM}} km · ₹{{DZIRE_RATE}}/km</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;background:#1e2638;border-radius:6px;"><tr>
+          <td width="{{DZIRE_PCT}}%" height="6" style="background:#ffb340;border-radius:6px;font-size:0;line-height:0;">&nbsp;</td><td style="font-size:0;line-height:0;">&nbsp;</td>
+        </tr></table>
+        <div style="margin-top:6px;font-size:12px;font-weight:600;color:#ffc56b;">{{DZIRE_PCT}}% of billable km</div>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- EV insight -->
+  <tr><td class="px" style="padding:14px 32px 0;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0e1a15;border:1px solid #1f3d2c;border-radius:14px;">
+      <tr><td align="center" style="padding:14px 20px;font-size:14px;line-height:21px;color:#cfe9da;">
+        EV sedans contributed <strong style="color:#5fe08a;">{{EV_PCT}}%</strong> of total billable distance this cycle, with a blended billing rate of <strong style="color:#ffffff;">₹{{AVG_COST_KM}}/km</strong> across {{VEHICLES}} vehicles.
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- ============ TAX INVOICE ============ -->
+  <tr><td class="px" style="padding:28px 32px 4px;">
+    <div style="font-size:12px;font-weight:700;letter-spacing:1.8px;color:#d4a24c;">TAX INVOICE</div>
+  </td></tr>
+  <tr><td class="px" style="padding:10px 32px 0;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#111829;border:1px solid #232d42;border-radius:18px;">
+      <!-- meta row -->
+      <tr><td style="padding:18px 20px 14px;border-bottom:1px solid #232d42;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+          <td class="stack" width="34%" valign="top">
+            <div style="font-size:10px;font-weight:700;letter-spacing:1.4px;color:#7d89a1;">INVOICE NO.</div>
+            <div style="margin-top:3px;font-size:15px;font-weight:700;color:#ffffff;">{{INVOICE_NO}}</div>
+          </td>
+          <td class="stack stack-gap" width="30%" valign="top">
+            <div style="font-size:10px;font-weight:700;letter-spacing:1.4px;color:#7d89a1;">DATE</div>
+            <div style="margin-top:3px;font-size:15px;font-weight:700;color:#ffffff;">{{INVOICE_DATE}}</div>
+          </td>
+          <td class="stack stack-gap" width="36%" valign="top">
+            <div style="font-size:10px;font-weight:700;letter-spacing:1.4px;color:#7d89a1;">SERVICE PERIOD</div>
+            <div style="margin-top:3px;font-size:15px;font-weight:700;color:#ffffff;">{{CYCLE_START}} – {{CYCLE_END}}</div>
+          </td>
+        </tr></table>
+      </td></tr>
+      <!-- parties -->
+      <tr><td style="padding:16px 20px;border-bottom:1px solid #232d42;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+          <td class="stack" width="50%" valign="top" style="padding-right:10px;font-size:12px;line-height:18px;color:#b3bdd0;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:1.4px;color:#7d89a1;margin-bottom:4px;">FROM</div>
+            <strong style="color:#ffffff;font-size:13px;">{{VENDOR_PROPRIETOR}}</strong><br>
+            Compass Travel &amp; Transportation<br>
+            {{VENDOR_ADDRESS_LINE1}}<br>
+            {{VENDOR_ADDRESS_LINE2}}<br>
+            PAN: {{VENDOR_PAN}}<br>
+            GSTIN: 32{{VENDOR_GSTIN}}
+          </td>
+          <td class="stack stack-gap" width="50%" valign="top" style="padding-left:10px;font-size:12px;line-height:18px;color:#b3bdd0;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:1.4px;color:#7d89a1;margin-bottom:4px;">BILLED TO</div>
+            <strong style="color:#ffffff;font-size:13px;">{{CUSTOMER_LEGAL_NAME}}</strong><br>
+            {{CUSTOMER_ADDRESS_LINE1}}<br>
+            {{CUSTOMER_ADDRESS_LINE2}}<br>
+            {{CUSTOMER_ADDRESS_LINE3}}<br>
+            GSTIN: {{CUSTOMER_GSTIN}}
+          </td>
+        </tr></table>
+      </td></tr>
+      <!-- line items -->
+      <tr><td style="padding:6px 20px 0;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="font-size:12px;color:#b3bdd0;">
+          <tr>
+            <td style="padding:10px 0 8px;font-size:10px;font-weight:700;letter-spacing:1.2px;color:#7d89a1;border-bottom:1px solid #232d42;">DESCRIPTION</td>
+            <td class="hide-sm" style="padding:10px 0 8px;font-size:10px;font-weight:700;letter-spacing:1.2px;color:#7d89a1;border-bottom:1px solid #232d42;">HSN/SAC</td>
+            <td align="right" style="padding:10px 0 8px;font-size:10px;font-weight:700;letter-spacing:1.2px;color:#7d89a1;border-bottom:1px solid #232d42;">AMOUNT (INR)</td>
+          </tr>
+          <tr>
+            <td style="padding:11px 8px 11px 0;border-bottom:1px solid #1b2334;"><span style="color:#ffffff;font-weight:600;">Rent-a-Cab Services — EV Sedan</span><br>{{EV_TRIPS}} trips · {{EV_KM}} km · ₹{{EV_RATE}}.00/km</td>
+            <td class="hide-sm" style="padding:11px 0;border-bottom:1px solid #1b2334;">996601<br><span style="color:#7d89a1;">Reverse Charge</span></td>
+            <td align="right" style="padding:11px 0;border-bottom:1px solid #1b2334;color:#ffffff;font-weight:600;">{{EV_AMOUNT}}.00</td>
+          </tr>
+          <tr>
+            <td style="padding:11px 8px 11px 0;border-bottom:1px solid #1b2334;"><span style="color:#ffffff;font-weight:600;">Rent-a-Cab Services — Marazzo</span><br>{{MARAZZO_TRIPS}} trips · {{MARAZZO_KM}} km · ₹{{MARAZZO_RATE}}.00/km</td>
+            <td class="hide-sm" style="padding:11px 0;border-bottom:1px solid #1b2334;">996601<br><span style="color:#7d89a1;">Reverse Charge</span></td>
+            <td align="right" style="padding:11px 0;border-bottom:1px solid #1b2334;color:#ffffff;font-weight:600;">{{MARAZZO_AMOUNT}}.00</td>
+          </tr>
+          <tr>
+            <td style="padding:11px 8px 11px 0;border-bottom:1px solid #1b2334;"><span style="color:#ffffff;font-weight:600;">Rent-a-Cab Services — Ertiga</span><br>{{ERTIGA_TRIPS}} trips · {{ERTIGA_KM}} km · ₹{{ERTIGA_RATE}}.00/km</td>
+            <td class="hide-sm" style="padding:11px 0;border-bottom:1px solid #1b2334;">996601<br><span style="color:#7d89a1;">Reverse Charge</span></td>
+            <td align="right" style="padding:11px 0;border-bottom:1px solid #1b2334;color:#ffffff;font-weight:600;">{{ERTIGA_AMOUNT}}.00</td>
+          </tr>
+          <tr>
+            <td style="padding:11px 8px 11px 0;border-bottom:1px solid #232d42;"><span style="color:#ffffff;font-weight:600;">Rent-a-Cab Services — Dzire</span><br>{{DZIRE_TRIPS}} trips · {{DZIRE_KM}} km · ₹{{DZIRE_RATE}}.00/km</td>
+            <td class="hide-sm" style="padding:11px 0;border-bottom:1px solid #232d42;">996601<br><span style="color:#7d89a1;">Reverse Charge</span></td>
+            <td align="right" style="padding:11px 0;border-bottom:1px solid #232d42;color:#ffffff;font-weight:600;">{{DZIRE_AMOUNT}}.00</td>
+          </tr>
+          <tr>
+            <td colspan="2" style="padding:10px 0 4px;">Subtotal</td>
+            <td align="right" style="padding:10px 0 4px;color:#ffffff;">INR {{TOTAL_2DP}}</td>
+          </tr>
+          <tr>
+            <td colspan="2" style="padding:4px 0 12px;">GST (RCM — payable by recipient)</td>
+            <td align="right" style="padding:4px 0 12px;">—</td>
+          </tr>
+        </table>
+      </td></tr>
+      <!-- grand total -->
+      <tr><td style="padding:0 20px 18px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1f1a0e;border:1px solid #4a3b1c;border-radius:14px;">
+          <tr><td style="padding:14px 16px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+              <td style="font-size:11px;font-weight:700;letter-spacing:1.6px;color:#e7c27a;">GRAND TOTAL</td>
+              <td align="right" style="font-size:20px;font-weight:700;color:#ffffff;">INR {{TOTAL_2DP}}</td>
+            </tr></table>
+            <div style="margin-top:4px;font-size:12px;color:#cdb98e;">{{TOTAL_IN_WORDS}}</div>
+          </td></tr>
+        </table>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- RCM note -->
+  <tr><td class="px" style="padding:12px 32px 0;">
+    <div style="font-size:11px;line-height:17px;color:#7d89a1;">
+      <strong style="color:#9aa6bd;">GST Reverse Charge Mechanism.</strong> As per Notification No. 22/2019 – Central Tax (Rate) amended by Notification No. 49/2019 – Central Tax dated 09.10.2019, tax on Rent-a-Cab services (@ 5%) provided by a non-corporate entity to a corporate entity shall be paid under RCM by the recipient corporate entity, effective 1st October 2019. Billable km is net of {{DEDUCTED_KM}} km deducted; {{NIL_KM_COUNT}} nil-km trips ({{NIL_KM_DATES}}) are excluded from billable kilometres. Billable km reconcile at {{BILLABLE_KM}} km.
+    </div>
+  </td></tr>
+
+  <!-- ============ FOR REVIEW ============ -->
+  <tr><td class="px" style="padding:20px 32px 0;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#111829;border:1px solid #232d42;border-radius:18px;">
+      <tr><td style="padding:18px 22px;">
+        <div style="font-size:12px;font-weight:700;letter-spacing:1.8px;color:#d4a24c;">FOR REVIEW</div>
+        <div style="margin-top:8px;font-size:14px;line-height:21px;color:#dfe5f0;">Kindly review the invoice and MIS details. Please let us know if any clarification or supporting trip information is required.</div>
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;"><tr>
+          <td><a class="btn" href="tel:{{PHONE_E164}}" style="display:inline-block;background:#1c2436;border:1px solid #34405a;color:#e8ecf4;font-size:13px;font-weight:600;padding:9px 16px;border-radius:980px;white-space:nowrap;">Call {{PHONE_DISPLAY}}</a></td>
+          <td width="8"></td>
+          <td><a class="btn" href="{{WEBSITE_URL}}" style="display:inline-block;color:#4da3ff;font-size:13px;font-weight:600;padding:9px 4px;">{{WEBSITE_LABEL}}&nbsp;›</a></td>
+        </tr></table>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- ============ SIGNATURE ============ -->
+  <tr><td class="px" style="padding:24px 32px 10px;font-size:14px;line-height:21px;color:#dfe5f0;">
+    Regards,<br>
+    <strong style="color:#ffffff;">{{SIGNATORY_NAME}}</strong><br>
+    <span style="color:#9aa6bd;">{{SIGNATORY_TITLE}} · Compass Travel &amp; Transportation</span><br>
+    <span style="color:#9aa6bd;">Compass Nexus iQ · Intelligent Navigation</span>
+  </td></tr>
+
+  <!-- ============ FOOTER ============ -->
+  <tr><td class="px" style="padding:10px 32px 26px;">
+    <div style="border-top:1px solid #1d2638;padding-top:14px;font-size:11px;line-height:17px;color:#6c7890;">
+      Figures are based on the {{CYCLE_MONTH}} MIS tripsheet export. {{NIL_KM_COUNT}} zero-km tripsheet rows are excluded from billable kilometres; trip count reflects all {{TRIPS}} logged trips. Amounts are in INR; GST payable by recipient under RCM. Attachments: Invoice {{INVOICE_NO}} (PDF), {{MIS_FILENAME}}.<br><br>
+      <a href="{{WEBSITE2_URL}}" style="color:#8d99b0;">{{WEBSITE2_LABEL}}</a> &nbsp;·&nbsp; <a href="mailto:{{REPLY_TO_EMAIL}}" style="color:#8d99b0;">{{REPLY_TO_EMAIL}}</a> &nbsp;·&nbsp; {{PHONE_DISPLAY}}
+    </div>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>
